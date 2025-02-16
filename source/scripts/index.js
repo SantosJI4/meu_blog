@@ -1,26 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const followButton = document.getElementById("followButton");
-  const followText = document.getElementById("followText");
-  const followersNumber = document.getElementById("followersNumber");
+  const followBtn = document.getElementById("followBtn");
+  const followerCount = document.getElementById("followerCount");
 
-  let isFollowing = localStorage.getItem("isFollowing") === "true";
+  // Get stored values
   let followers = parseInt(localStorage.getItem("followers")) || 0;
+  let isFollowing = localStorage.getItem("isFollowing") === "true";
 
-  updateFollowState();
+  // Update initial state
+  updateFollowUI();
 
-  followButton.addEventListener("click", () => {
+  followBtn.addEventListener("click", () => {
     isFollowing = !isFollowing;
     followers = isFollowing ? followers + 1 : followers - 1;
 
-    localStorage.setItem("isFollowing", isFollowing);
+    // Store new values
     localStorage.setItem("followers", followers);
+    localStorage.setItem("isFollowing", isFollowing);
 
-    updateFollowState();
+    updateFollowUI();
   });
 
-  function updateFollowState() {
-    followText.textContent = isFollowing ? "Seguindo" : "Seguir";
-    followersNumber.textContent = followers;
-    followButton.classList.toggle("following", isFollowing);
+  function updateFollowUI() {
+    followBtn.textContent = isFollowing ? "Seguindo" : "Seguir";
+    followBtn.classList.toggle("following", isFollowing);
+    followerCount.textContent = followers;
   }
 });
