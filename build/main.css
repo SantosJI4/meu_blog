@@ -343,4 +343,11 @@ section h2 {
   text-decoration: underline;
 }
 
+#snakeGame {
+  display: block;
+  margin: 20px auto;
+  background-color: #000;
+  border: 2px solid #fff;
+}
+
 /*# sourceMappingURL=main.css.map */
